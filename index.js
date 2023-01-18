@@ -18,20 +18,32 @@ class Counter extends React.Component {
             count: 0
         }
     }
+    increment=()=>{
+        // this.state.count++;
+        this.setState({count:this.state.count+1});
+        console.log(this.state.count);
+
+    }
+    decrement=()=>{
+        // this.state.count--;
+        this.setState({count:this.state.count-1});
+
+        console.log(this.state.count);
+    }
     render() {
         const { count } = this.state;
         return React.createElement(React.Fragment, null,
-            React.createElement('h2', null, count),
-            React.createElement('button', null, '+'),
-            React.createElement('button', null, '-')
+            React.createElement('h2', {className:'color'}, count),
+            React.createElement('button', {onClick:this.increment}, '+'),
+            React.createElement('button', {onClick:this.decrement}, '-')
         );
     }
 }
 const root = document.getElementById('root');
 
-// const container = React.createRoot(root);
+const container = ReactDOM.createRoot(root);
 
 // const child = React.createElement(Heading, { titleProps: 'titleProps', className: "color" }, 'Brad', 'Vasya');
 const child = React.createElement(Counter, {})
     // ReactDOM.createPortal(child, container);
-ReactDOM.render(child, root);
+container.render(child);
